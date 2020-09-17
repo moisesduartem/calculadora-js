@@ -1,4 +1,9 @@
 body {
     padding: 30px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.key {
+    margin: 10px;
 }
