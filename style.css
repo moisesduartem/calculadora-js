@@ -23,7 +23,17 @@ body {
 }
 
 .key {
-    padding: 10px;
+    padding: 15px 23px;
     font-size: 32px;
-    margin: 10px;
+    margin: 5px;
+}
+
+.operation {
+    font-size: 24px;
+    margin-top: 10px;
+    padding: 3px 16px;
+}
+
+a {
+    margin-top: 10px;
 }
