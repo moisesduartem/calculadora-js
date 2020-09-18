@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const keys = document.querySelectorAll('.key');
+    const keys = getKeys();
     keys.forEach((key, i) => {
-        console.log(key);
+        key.addEventListener('click', e => {
+            console.log(key.getAttribute('class'));
+        });
     });
 });
+
+/**
+ * [Retorna as teclas da calculadora.]
+ */
+let getKeys = function () {
+    return document.querySelectorAll('.key');
+} 
