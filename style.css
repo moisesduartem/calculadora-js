@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column-reverse;
     height: 400px;
-    width: 250px;
+    width: 400px;
     background-color: #2b3c4b;
     border-radius: 5px;
     padding: 10px;
