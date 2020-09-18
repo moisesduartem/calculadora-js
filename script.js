@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function(){
+    // Recebe as teclas
     const keys = getKeys();
+    // Inicializa o acumulador
     let accumulator = '';
-    let operation = false;
+    // Percorre as teclas
     keys.forEach(function(key, i) {
-        key.addEventListener('click', function(e){ 
-            operation = (isAnOperation(key)) ? key.value : '';
-            console.log(operation);
-
-            if (operation == '=') {
-                // return accumulator = executeCalc(accumulator);
-            }
-        
+        // Detecta o clique...
+        key.addEventListener('click', function(e){
+            // Se não for uma operação, adiciona ao acumulador
+            accumulator += (isAnOperation(key)) ? '' : key.value;
+            
+            document.getElementById('result').value = accumulator;
         });
     });
 });
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
 /**
  * [Retorna as teclas da calculadora.]
  */
-let getKeys = function () {
+function getKeys() {
     return document.querySelectorAll('.key');
 };
 
@@ -26,10 +26,45 @@ let getKeys = function () {
  * [Busca e retorna resultados para encontrar class operation no elemento.]
  * @param {r} key 
  */
-let isAnOperation = function (key) {
+function isAnOperation (key) {
     return key.getAttribute('class').match(/operation/g);
 };
 
-let executeCalc = function (expression) {
-    return toString((eval(expression)));
+let run = function (fn) {
+    return fn();
+}
+
+/**
+ * [Executa Soma.]
+ */
+function sum(a, b) {
+    return a + b;
+};
+
+/**
+ * [Executa Subtração.]
+ */
+function sub(a, b) {
+    return a - b;
+};
+
+/**
+ * [Executa Multiplicação.]
+ */
+function mult(a, b) {
+    return a * b;
+};
+
+/**
+ * [Executa Divisão.]
+ */
+function div(a, b) {
+    return a * b;
+};
+
+/**
+ * [Limpar o visor.]
+ */
+function clear() {
+    return document.getElementById('result').value = '0';
 };
