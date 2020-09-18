@@ -1,20 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(){
     const keys = getKeys();
     let accumulator = '';
-    let operation = '';
+    let operation = false;
     keys.forEach(function(key, i) {
-        key.addEventListener('click', function(e){
-            let isAnOperation = key.getAttribute('class').match(/operation/g); 
-            operation = (isAnOperation) ? key.value : '';
-            
-            if (operation == '=') {
-                executeCalc(accumulator);
-                return accumulator = '';
-            }
-            
-            accumulator += (accumulator.length > 0 && isAnOperation || !isAnOperation) ? key.value : '';
+        key.addEventListener('click', function(e){ 
+            operation = (isAnOperation(key)) ? key.value : '';
+            console.log(operation);
 
-            console.log(accumulator);
+            if (operation == '=') {
+                // return accumulator = executeCalc(accumulator);
+            }
         
         });
     });
@@ -25,8 +20,16 @@ document.addEventListener('DOMContentLoaded', function(){
  */
 let getKeys = function () {
     return document.querySelectorAll('.key');
-} 
+};
+
+/**
+ * [Busca e retorna resultados para encontrar class operation no elemento.]
+ * @param {r} key 
+ */
+let isAnOperation = function (key) {
+    return key.getAttribute('class').match(/operation/g);
+};
 
 let executeCalc = function (expression) {
-    console.log(eval(expression));
-}
+    return toString((eval(expression)));
+};
