@@ -4,7 +4,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
-    background: #847ea8;
+    background: #2e2e2e;
 }
 
 #container {
@@ -13,7 +13,7 @@ body {
     flex-direction: column-reverse;
     height: 400px;
     width: 400px;
-    background-color: #2b3c4b;
+    background-color: #334753;
     border-radius: 8px;
     padding: 10px;
 }
@@ -30,14 +30,15 @@ body {
     font-size: 32px;
     margin: 5px;
     border-radius: 5px;
-    background-color: #636363;
+    background-color: #306064;
     color: #fff;
     border: none;
     outline: none;
+    transition: all .2s;
 }
 
 .key:hover {
-    background-color: #434549;   
+    background-color: #15494e;   
 }
 
 .operation {
