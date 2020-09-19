@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // Recebe as teclas
     const keys = getKeys();
     // Inicializa primeiro valor do calculo, segundo valor do calculo e acumulador
-    let a = '', b = '', acc = '';
+    let a = 0, b = 0, acc = '';
     // Inicializa a operação
     let operation = {};
     // Captura o visor
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
         key.addEventListener('click', function(e){
             // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis 
                 if (key.value === 'clear') {
-                    a = '';
-                    b = '';
+                    a = 0;
+                    b = 0;
                     acc = '';
                     return clear(visor);
                 }
@@ -22,22 +22,32 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Se for uma operação, entrega o nome 
                 // da função dessa operação à variavel operation
                 if (isAnOperation(key) && key.value !== 'calc') {
+                    // Adiciona a função ao objeto operation
+                    operation = {
+                        fn: window[key.value],
+                        symbol: key.innerText
+                    };
                     // Atribui o que estava no contador até agora à 'a'
-                    a = parseInt(acc);
-                    visor.value += ` ${key.innerText} `;
+                    a = acc ? parseInt(acc) : 0;
+                    // Adiciona o simbolo ao visor
+                    visor.value += ` ${operation.symbol} `;
+                    // Limpa o acumulador
                     acc = '';
-                    operation.fn = window[key.value];
-                    operation.symbol = key.innerHTML;
+                    // Retorna o objeto
                     return operation;
                 }
                 
                 // Se foi clicado no sinal de igual
                 // ele efetua a operação entre a e b
                 if (key.value === 'calc') {
+                    // Atribui o novo acumulador à variável b
                     b = parseInt(acc);
+                    // Inclui o resultado no visor
                     visor.value = calc(a, b, operation.fn);
+                    // Acumulador recebe o resultado
                     acc = calc(a, b, operation.fn);
-                    a = '', b = '';
+                    // Zera as variáveis
+                    a = 0, b = 0;
                     return true;
                 }
 
