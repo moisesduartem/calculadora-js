@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', function(){
     keys.forEach(function(key, i) {
         // Detecta o clique...
         key.addEventListener('click', function(e){
-            // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis
-            (key.value === 'clear') ? clear(a, b, acc, visor) : '';
-                
+            // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis 
+                if (key.value === 'clear') {
+                    return clear(a, b, acc, visor);
+                }
+
                 // Se for uma operação, entrega o nome 
                 // da função dessa operação à variavel operation
                 if (isAnOperation(key) && key.value !== 'calc') {
@@ -28,10 +30,12 @@ document.addEventListener('DOMContentLoaded', function(){
                 
                 // Se foi clicado no sinal de igual
                 // ele efetua a operação entre a e b
-                if (key.value === 'calc')
-                {
+                if (key.value === 'calc') {
                     b = parseInt(acc);
-                    return visor.value = calc(a, b, operation.fn);
+                    visor.value = calc(a, b, operation.fn);
+                    acc = calc(a, b, operation.fn);
+                    a = '', b = '';
+                    return true;
                 }
 
                 acc += key.value;
