@@ -41,6 +41,10 @@ body {
     background-color: #15494e;   
 }
 
+.enabled {
+    background-color: #2e2e2e;
+}
+
 .operation {
     font-size: 20px;
     margin-top: 10px;
