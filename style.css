@@ -31,6 +31,12 @@ body {
     border-radius: 5px;
     background-color: #636363;
     color: #fff;
+    border: none;
+    outline: none;
+}
+
+.key:hover {
+    background-color: #434549;   
 }
 
 .operation {
