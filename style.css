@@ -4,6 +4,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
+    background: #847ea8;
 }
 
 #container {
@@ -13,7 +14,7 @@ body {
     height: 400px;
     width: 400px;
     background-color: #2b3c4b;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px;
 }
 
