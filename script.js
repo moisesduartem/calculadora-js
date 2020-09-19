@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function(){
         key.addEventListener('click', function(e){
             // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis 
                 if (key.value === 'clear') {
-                    return clear(a, b, acc, visor);
+                    a = '';
+                    b = '';
+                    acc = '';
+                    return clear(visor);
                 }
 
                 // Se for uma operação, entrega o nome 
@@ -91,8 +94,7 @@ function div(a, b) {
 /**
  * [Limpar o visor.]
  */
-function clear(a, b, acc, visor) {
-    a = ''; b = ''; acc = '';
+function clear(visor) {
     return visor.value = '0';
 };
 
