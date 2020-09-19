@@ -11,11 +11,11 @@ body {
     margin-top: 100px;
     display: flex;
     flex-direction: column-reverse;
-    height: 385px;
+    height: 410px;
     width: 350px;
     background-color: #334753;
     border-radius: 8px;
-    padding: 12px;
+    padding: 30px;
 }
 
 .row {
@@ -31,6 +31,7 @@ body {
     margin: 5px;
     border-radius: 5px;
     background-color: #306064;
+    width: 90px;
     color: #fff;
     border: none;
     outline: none;
@@ -46,9 +47,7 @@ body {
 }
 
 .operation {
-    font-size: 20px;
-    margin-top: 10px;
-    padding: 3px 7.5px;
+    background-color: #2a4d53;
 }
 
 a {
@@ -68,7 +67,7 @@ input#result {
     font-size: 20px;
     padding: 10px;
     width: 100%;
-    margin: 15px;
+    margin: 5px 5px 23px 5px;
     background-color: #bbd0d1;
     border-radius: 5px;
     border: none;
