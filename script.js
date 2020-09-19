@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
             // Adiciona a tecla ao acumulador
             acc += key.value;
             // Insere o acumulador no visor
-            visor.value = acc ? acc : 0;
+            visor.value = acc;
         });
     });
 });
