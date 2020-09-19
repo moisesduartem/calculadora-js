@@ -11,26 +11,32 @@ document.addEventListener('DOMContentLoaded', function(){
     keys.forEach(function(key, i) {
         // Detecta o clique...
         key.addEventListener('click', function(e){
-            // Se for uma operação, entrega o nome 
-            // da função dessa operação à variavel operation
-            if (isAnOperation(key) && key.value !== 'calc') {
-                a = parseInt(acc);
-                clear();
-                acc = '';
-                operation.fn = window[key.value];
-                operation.symbol = key.innerHTML;
-                return operation;
-            }
-            // Se foi clicado no sinal de igual
-            // ele efetua a operação entre a e b
-            if (key.value === 'calc')
-            {
-                b = parseInt(acc);
-                return visor.value = calc(a, b, operation.fn);
-            }
+            // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis
+            (key.value === 'clear') ? clear(a, b, acc, visor) : '';
+                
+                // Se for uma operação, entrega o nome 
+                // da função dessa operação à variavel operation
+                if (isAnOperation(key) && key.value !== 'calc') {
+                    // Atribui o que estava no contador até agora à 'a'
+                    a = parseInt(acc);
+                    visor.value += ` ${key.innerText} `;
+                    acc = '';
+                    operation.fn = window[key.value];
+                    operation.symbol = key.innerHTML;
+                    return operation;
+                }
+                
+                // Se foi clicado no sinal de igual
+                // ele efetua a operação entre a e b
+                if (key.value === 'calc')
+                {
+                    b = parseInt(acc);
+                    return visor.value = calc(a, b, operation.fn);
+                }
 
-            acc += key.value;
-            visor.value = acc;
+                acc += key.value;
+                visor.value = acc;
+            ;
         });
     });
 });
@@ -81,8 +87,9 @@ function div(a, b) {
 /**
  * [Limpar o visor.]
  */
-function clear() {
-    return document.getElementById('result').value = '0';
+function clear(a, b, acc, visor) {
+    a = ''; b = ''; acc = '';
+    return visor.value = '0';
 };
 
 /**
