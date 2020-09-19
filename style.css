@@ -42,16 +42,16 @@ body {
     background-color: #15494e;   
 }
 
-.enabled {
-    background-color: #2e2e2e;
-}
-
 .operation {
     background-color: #2a4d53;
 }
 
 .operation:hover {
     background-color: #1d3a3f;
+}
+
+.enabled {
+    background-color: #2e2e2e;
 }
 
 a {
