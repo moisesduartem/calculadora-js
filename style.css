@@ -15,7 +15,7 @@ body {
     width: 400px;
     background-color: #334753;
     border-radius: 8px;
-    padding: 10px;
+    padding: 12px;
 }
 
 .row {
@@ -48,9 +48,16 @@ body {
 }
 
 a {
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 10px;
     color: aliceblue;
+    text-decoration: none;
+    transition: all .2s;
+}
+
+a:hover {
+    font-size: 13px;
+    color: white;
 }
 
 input#result {
