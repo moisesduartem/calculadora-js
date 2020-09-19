@@ -12,51 +12,60 @@ document.addEventListener('DOMContentLoaded', function(){
         // Detecta o clique...
         key.addEventListener('click', function(e){
             // Se for o botão CLEAR, já limpa a tela, o acumulador e as variáveis 
-                if (key.value === 'clear') {
-                    a = 0;
-                    b = 0;
-                    acc = '';
-                    return clear(visor);
-                }
-
-                // Se for uma operação, entrega o nome 
-                // da função dessa operação à variavel operation
-                if (isAnOperation(key) && key.value !== 'calc') {
-                    // Adiciona a função ao objeto operation
-                    operation = {
-                        fn: window[key.value],
-                        symbol: key.innerText
-                    };
-                    // Atribui o que estava no contador até agora à 'a'
-                    a = acc ? parseInt(acc) : 0;
-                    // Adiciona o simbolo ao visor
-                    visor.value += ` ${operation.symbol} `;
-                    // Limpa o acumulador
-                    acc = '';
-                    // Retorna o objeto
-                    return operation;
-                }
-                
-                // Se foi clicado no sinal de igual
-                // ele efetua a operação entre a e b
-                if (key.value === 'calc') {
-                    // Atribui o novo acumulador à variável b
-                    b = parseInt(acc);
-                    // Inclui o resultado no visor
-                    visor.value = calc(a, b, operation.fn);
-                    // Acumulador recebe o resultado
-                    acc = calc(a, b, operation.fn);
-                    // Zera as variáveis
-                    a = 0, b = 0;
-                    return true;
-                }
-
-                acc += key.value;
-                visor.value = acc;
-            ;
+            if (key.value === 'clear') {
+                a = 0;
+                b = 0;
+                acc = '';
+                return clear(visor);
+            }
+            // Se for uma operação, entrega o nome 
+            // da função dessa operação à variavel operation
+            if (isAnOperation(key) && key.value !== 'calc') {
+                // Adiciona a função ao objeto operation
+                operation = {
+                    fn: window[key.value],
+                    symbol: key.innerText
+                };
+                // Atribui o que estava no contador até agora à 'a'
+                a = acc ? parseInt(acc) : 0;
+                // Põe cor do botão da operação matemática mais escura até que 
+                // '=' seja selecionado
+                key.className = 'key operation enabled';
+                // Limpa o acumulador
+                acc = '';
+                // Retorna o objeto
+                return operation;
+            }
+            // Se foi clicado no sinal de igual
+            // ele efetua a operação entre a e b
+            if (key.value === 'calc') {
+                // Atribui o novo acumulador à variável b
+                b = parseInt(acc);
+                // Inclui o resultado no visor
+                visor.value = calc(a, b, operation.fn);
+                // Acumulador recebe o resultado
+                acc = calc(a, b, operation.fn);
+                // Zera as variáveis
+                a = 0, b = 0;
+                // Volta botão da cor normal para a operação novamente
+                document.querySelector('.enabled').className = 'key operation';
+                return true;
+            }
+            // Adiciona a tecla ao acumulador
+            acc += key.value;
+            // Insere o acumulador no visor
+            visor.value = acc;
         });
     });
 });
+
+/**
+ * [Executa calculo.]
+ */
+
+function calc(a, b, fn) {
+    return fn(a, b);
+};
 
 /**
  * [Retorna as teclas da calculadora.]
@@ -107,11 +116,3 @@ function div(a, b) {
 function clear(visor) {
     return visor.value = '0';
 };
-
-/**
- * [Executa calculo.]
- */
-
- function calc(a, b, fn) {
-    return fn(a, b);
- }
