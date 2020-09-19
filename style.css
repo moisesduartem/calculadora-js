@@ -66,6 +66,7 @@ input#result {
     width: 100%;
     margin: 15px;
     background-color: #bbd0d1;
+    border-radius: 5px;
     border: none;
     outline: none;
 }
